@@ -1,0 +1,20 @@
+.nav {
+	justify-content: space-between;
+	box-shadow: 0px 4px 3px -3px black;
+	background-color: rgb(45, 145, 240);
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+a.is-active {
+	color: rgb(192, 100, 136);
+}
+
+img {
+	z-index: 20;
+}
