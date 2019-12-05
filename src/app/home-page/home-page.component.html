@@ -3,14 +3,15 @@
        
         <mat-checkbox type="checkbox"
         [(ngModel)]="toggleLocation">
-        Would you like to use your current location?
+        Share your current location
         </mat-checkbox>
-        
+
+        <p>OR</p>
 
         <mat-form-field appearance="outline">
                 <mat-label>What is your location?</mat-label>
                 <input matInput placeholder="Enter the address">
-                <mat-hint>Use if you did not share your location</mat-hint>
+
         </mat-form-field>
 
         <button mat-button routerLink="/results">Submit</button>
