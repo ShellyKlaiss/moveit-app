@@ -1,0 +1,25 @@
+.nav {
+	justify-content: space-between;
+	background-color: #00BCAB;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+a.is-active {
+	color: #A9EA82;
+}
+
+span {
+	color: white;
+	font-size: 30px;
+	font-family: 'Tomorrow', sans-serif;
+}
+
+img {
+	z-index: 20;
+}

@@ -1,0 +1,71 @@
+.form-box {
+    display: flex;
+    height: 95vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #2483A2 0%, #00BCAB 100%);
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid #00BCAB;
+    border-radius: 5%;
+    height: 45%;
+    width: 60%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+mat-form-field {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+button {
+    background-color: #00BCAB;
+    font-family: 'Tomorrow', sans-serif;
+    color: white;
+}
+
+.form-box {
+    display: flex;
+    height: 95vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #2483a2 0%, #00bcab 100%);
+}
+​
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid #00BCAB;
+    border-radius: 5%;
+    height: 45%;
+    width: 60%;
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+​
+mat-form-field {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+​
+button {
+    background-color: #00BCAB;
+    font-family: 'Tomorrow', sans-serif;
+    color: white;
+}
+​
+img {
+    background-image: url(https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=yOObhmJUPCw8WqIwo2rE&app_code=NQJwKCsLtC3mWJ4NE0qrXQ&ci=Detroit,+MI&h=300&w=300&z=14&f=0&style=alps);
+}
