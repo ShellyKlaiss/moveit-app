@@ -14,10 +14,10 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchOptions(form) {
-    this.search.setOptions(form.value);
+  // searchOptions(form) {
+  //   this.search.setOptions(form.value);
 
-    this.router.navigate(["results"]);
-  }
+  //   this.router.navigate(["results"]);
+  // }
 
 }

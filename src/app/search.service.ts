@@ -13,11 +13,11 @@ export class SearchService {
   constructor(private api: ApiService) { }
 
  
-  setOptions(options: SearchInterface) {
-    this.searchInterface = options;
-    this.searchResults = []; 
-    this.performSearch();
-  }
+  // setOptions(options: SearchInterface) {
+  //   this.searchInterface = options;
+  //   this.searchResults = []; 
+  //   this.performSearch();
+  // }
 
   
   getOptions(): SearchInterface {
@@ -35,9 +35,9 @@ export class SearchService {
   }
 
 
-  private performSearch(): void {
-    this.api.getData(this.searchInterface).subscribe(this.handleResponse);
-  }
+  // private performSearch(): any {
+  //   this.api.getData(this.searchInterface).subscribe(this.handleResponse);
+  // }
 
   
   private handleResponse = (response: any): void => {
