@@ -1,7 +1,6 @@
 .nav {
 	justify-content: space-between;
-	box-shadow: 0px 4px 3px -3px black;
-	background-color: rgb(45, 145, 240);
+	background-color: #00BCAB;
 }
 
 a {
@@ -12,7 +11,13 @@ a {
 }
 
 a.is-active {
-	color: rgb(192, 100, 136);
+	color: #A9EA82;
+}
+
+span {
+	color: white;
+	font-size: 30px;
+	font-family: 'Tomorrow', sans-serif;
 }
 
 img {
