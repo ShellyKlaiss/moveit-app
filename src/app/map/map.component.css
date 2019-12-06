@@ -1,4 +1,7 @@
-form {
+.sebm-google-map-container {
+    height: 600px;
+  }
+  form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,6 +73,7 @@ mat-label {
     color:darkgray;
     width: 50%;
 }
+
 mat-form-field {
     display: flex;
     justify-content: center;
@@ -78,12 +82,3 @@ mat-form-field {
     color: #00BCAB;
 }
 
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-    border-color: #00BCAB;
-    background-color: white;
-}
-
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
-    background-color:  #00BCAB!important; 
-
-}

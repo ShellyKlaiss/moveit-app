@@ -1,0 +1,14 @@
+<!-- map/map.component.html -->
+
+<agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true" [zoomControl]="true" [(fitBounds)]='location.viewport'>
+  <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng" [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'></agm-marker>
+</agm-map>
+
+<!-- 
+<mat-form-field >
+      <mat-label> Street Address</mat-label>
+      <input matInput type='text' [(ngModel)]='location.address_level_1' class="form-control" placeholder='Office, Apt, Home, Street'>
+    <button mat-button (click)='updateOnMap()' type="submit">Search</button>
+</mat-form-field > -->
+
+    
