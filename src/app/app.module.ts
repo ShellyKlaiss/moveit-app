@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { Component, ViewChild, ElementRef } from 
+'@angular/core';
 import { MatExpansionModule, MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,17 +24,23 @@ import { ResultsComponent } from './results/results.component';
 import { ResultsInfoComponent } from './results-info/results-info.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MapComponent } from './map/map.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     ResultsComponent,
-    ResultsInfoComponent
+    ResultsInfoComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyBVUka9trkKlUo-U2P7hn3CJY_jG594Cl4'}),
     FormsModule,
+    NgbModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -49,9 +56,11 @@ import { AppRoutingModule } from './app-routing.module';
 	  MatToolbarModule,
 	  MatListModule,
 	  MatRadioModule,
-	  MatIconModule,
+    MatIconModule,
   ],
-  providers: [],
+  providers: [
+    GoogleMapsAPIWrapper
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

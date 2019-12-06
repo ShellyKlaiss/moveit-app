@@ -23,3 +23,7 @@ span {
 img {
 	z-index: 20;
 }
+
+mat-icon {
+	color: #A9EA82;
+}
