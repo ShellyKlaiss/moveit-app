@@ -1,12 +1,12 @@
 <div class="form-box">
-        <form #searchForm="ngForm" (ngSubmit)="searchRecipes(searchForm)">
+        <form>
         
             <mat-checkbox type="checkbox"
             [(ngModel)]="toggleLocation">
             Would you like to use your current location?
             </mat-checkbox>
+
             <p>OR</p>
-            
 
             <mat-form-field >
                     <mat-label>What is your location?</mat-label>
