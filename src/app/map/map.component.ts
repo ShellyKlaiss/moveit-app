@@ -1,10 +1,10 @@
-import { Component, ViewChild, NgZone, OnInit } from '@angular/core';
+import { Component, ViewChild, NgZone, OnInit, Input } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { MouseEvent } from '@agm/core';
 import { AstTransformer } from '@angular/compiler/src/output/output_ast';
 
-declare let google:any;
+declare let google: any;
 
 interface Marker {
   lat: number;
@@ -18,10 +18,10 @@ interface Location {
   lng: number;
   viewport?: Object;
   zoom: number;
-  address_level_1?:string; //street
-  address_level_2?:string; //city
-  address_zip?:string;
-  address_state?:string;
+  address_level_1?: string; //street
+  address_level_2?: string; //city
+  address_zip?: string;
+  address_state?: string;
   marker?: Marker;
 }
 
@@ -35,15 +35,15 @@ interface Location {
 
 
 export class MapComponent implements OnInit {
-
-  geocoder:any;
+  @Input() myLocation: any;
+  geocoder: any;
 
   // Detroit - Current Location
-  public location:Location = {
-    lat:42.331429,
+  public location: Location = {
+    lat: 42.331429,
     lng: -83.045753,
     marker: {
-      lat:42.331429,
+      lat: 42.331429,
       lng: -83.045753,
       draggable: true,
     },
@@ -54,10 +54,10 @@ export class MapComponent implements OnInit {
   icon = {
     url: 'http://www.clker.com/cliparts/4/D/0/e/2/t/bike-sign-red-hi.png',
     scaledSize: {
-      width: 25,
-      height: 25
+      width: 30,
+      height: 30,
     }
-}
+  }
 
   // Mogo Markers
   locations = [
@@ -110,9 +110,9 @@ export class MapComponent implements OnInit {
 
 
 
-@ViewChild (AgmMap, {static: true}) map: AgmMap;
+  @ViewChild(AgmMap, { static: true }) map: AgmMap;
 
-  constructor (public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper) { 
+  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper) {
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
@@ -123,6 +123,70 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.location.marker.draggable = true;
+    this.updateOnMap()
   }
+
+  findLocation(address) {
+    if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
+    this.geocoder.geocode({
+      'address': address
+    }, (results, status) => {
+      console.log(results);
+      if (status == google.maps.GeocoderStatus.OK) {
+        for (var i = 0; i < results[0].address_components.length; i++) {
+          let types = results[0].address_components[i].types
+          console.log(types);
+          if (types.indexOf('locality') != -1) {
+            this.location.address_level_2 = results[0].address_components[i].long_name
+          }
+          // if (types.indexOf('country') != -1) {
+          //   this.location.address_country = results[0].address_components[i].long_name
+          // }
+          if (types.indexOf('postal_code') != -1) {
+            this.location.address_zip = results[0].address_components[i].long_name
+          }
+          if (types.indexOf('administrative_area_level_1') != -1) {
+            this.location.address_state = results[0].address_components[i].long_name
+          }
+        }
+        if (results[0].geometry.location) {
+          this.location.lat = results[0].geometry.location.lat();
+          this.location.lng = results[0].geometry.location.lng();
+          this.location.marker.lat = results[0].geometry.location.lat();
+          this.location.marker.lng = results[0].geometry.location.lng();
+          this.location.marker.draggable = true;
+          this.location.viewport = results[0].geometry.viewport;
+        }
+
+        this.map.triggerResize()
+      } else {
+        alert("Sorry, this search produced no results.");
+      }
+    })
+  }
+
+
+  updateOnMap() {
+
+    let currentLocation: string = this.myLocation.street || ""
+    if (this.myLocation.city) currentLocation = currentLocation + " " + this.myLocation.city
+    if (this.myLocation.state) currentLocation = currentLocation + " " + this.myLocation.state
+    this.findLocation(currentLocation);
+    // console.log(currentLocation);
+  }
+
+  // Diana's test form updateOnMap function
+  // updateOnMap() {
+  //   console.log('updating')
+  //   let full_address: string = this.location.address_level_1 || ""
+  //   if (this.location.address_level_2) full_address = full_address + " " + this.location.address_level_2
+  //   if (this.location.address_state) full_address = full_address + " " + this.location.address_state
+  //   // if (this.location.address_country) full_address = full_address + " " + this.location.address_country
+  //   this.findLocation(full_address);
+  //   console.log(full_address);
+  // }
+
+
+
 
 }

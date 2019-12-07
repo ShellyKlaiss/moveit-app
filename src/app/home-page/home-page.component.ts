@@ -11,6 +11,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(private search: SearchService, private router: Router) { }
 
+  location: any;
+
   ngOnInit() {
   }
 
@@ -18,6 +20,16 @@ export class HomePageComponent implements OnInit {
   //   this.search.setOptions(form.value);
 
   //   this.router.navigate(["results"]);
+  // }
+
+  sendLocation(form: any) {
+    this.search.setLocation(form)
+    this.router.navigate(["/results"])
+  }
+
+  // sendLocation() {
+  //   this.search.setLocation(this.location)
+  //   this.router.navigate(["/results"])
   // }
 
 }

@@ -1,6 +1,25 @@
-<div class="form-box">
+<!-- form needs angular material added for styling -->
+<div>
+	<form #locationForm="ngForm" (ngSubmit)="sendLocation(locationForm.value)">
+		<label for="street">Street
+			<input type="text" id="street" name="street" ngModel>
+		</label>
+		<label for="city">City
+			<input type="text" id="city" name="city" ngModel>
+		</label>
+		<label for="state">State
+			<input type="text" id="state" name="state" ngModel>
+		</label>
+		<label for="zip">Zip Code
+			<input type="text" id="zip" name="zip" ngModel>
+		</label>
+		<button>Submit Your Location</button>
+	</form>
+</div>
+
+<!-- First form of project -->
+<!-- <div class="form-box">
         <form>
-        
             <mat-checkbox type="checkbox"
             [(ngModel)]="toggleLocation">
             Would you like to use your current location?
@@ -16,4 +35,4 @@
             <button mat-button routerLink="/results">Submit</button>
             
         </form>
-</div>
+</div> -->
