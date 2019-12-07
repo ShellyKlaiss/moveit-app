@@ -1,89 +1,58 @@
+.form-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+    background-color: white;
+}
+
 form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 5px solid #00BCAB;
-    border-radius: 5%;
     height: 45%;
     width: 60%;
     padding: 2%;
+    border: 5px solid #00BCAB;
+    border-radius: 5%;
     background-color: white;
 }
 
-mat-form-field {
-    font-size: inherit;
-    font-weight: 400;
-    line-height: 1.125;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+    background-color: white;
+    border-color: #00BCAB;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+    background-color:  #00BCAB!important; 
 }
 
 p {
     font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
-button {
-    background-color: #00BCAB;
-    font-family: 'Tomorrow', sans-serif;
-    color: white;
-    width: 50%;
-}
-
-.form-box {
-    display: flex;
-    height: 95vh;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-​
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 5px solid #00BCAB;
-    border-radius: 5%;
-    height: 45%;
-    width: 60%;
-    padding: 2%;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-​
-mat-form-field {
-    font-size: inherit;
-    font-weight: 400;
-    line-height: 1.125;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-    border-block-color: #00BCAB;
-}
-
-​
-button {
-    background-color: #00BCAB;
-    background: #00BCAB;
-    font-family: 'Tomorrow', sans-serif;
-    color: white;
-}
-
-mat-label {
-    color:darkgray;
-    width: 50%;
-}
 mat-form-field {
     display: flex;
     justify-content: center;
     align-content: center;
     text-align: center;
     color: #00BCAB;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
 }
 
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-    border-color: #00BCAB;
-    background-color: white;
+mat-label {
+    width: 50%;
+    color:darkgray;
 }
 
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
-    background-color:  #00BCAB!important; 
-
+button {
+    width: 50%;
+    color: white;
+    background-color: #00BCAB;
+    background: #00BCAB;
+    font-family: 'Tomorrow', sans-serif;
 }

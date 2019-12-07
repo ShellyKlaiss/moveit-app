@@ -12,33 +12,6 @@ export class SearchService {
 
   constructor(private api: ApiService) { }
 
- 
-  // setOptions(options: SearchInterface) {
-  //   this.searchInterface = options;
-  //   this.searchResults = []; 
-  //   this.performSearch();
-  // }
-
-  
-  getOptions(): SearchInterface {
-    return this.searchInterface;
-  }
-
-
-  getSearchResults(): any[] {
-    return this.searchResults;
-  }
-
-
-  getCommuteOptions(name: string): any {
-    return this.searchResults.find(commuteroption => commuteroption.label.toLowerCase() === name.toLowerCase())
-  }
-
-
-  // private performSearch(): any {
-  //   this.api.getData(this.searchInterface).subscribe(this.handleResponse);
-  // }
-
   
   private handleResponse = (response: any): void => {
     for (let hit of response["hits"]) {

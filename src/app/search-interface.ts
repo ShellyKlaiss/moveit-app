@@ -2,7 +2,5 @@
 export interface SearchInterface {
     toggleLocation: boolean;
     customLocation: string;
-    // dietaryRestriction?: string;
-    // minCalories?: number;
   }
   
