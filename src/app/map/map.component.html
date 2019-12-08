@@ -1,1 +1,39 @@
-<p>map works!</p>
+<agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
+  [zoomControl]="true" [(fitBounds)]='location.viewport'>
+
+  <!-- Detroit / Current Location -->
+  <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
+    [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'>
+  </agm-marker>
+
+  <!-- Mogo Markers -->
+  <agm-marker *ngFor="let location of locations" [label]="location.id" [title]="location.name"
+    [longitude]="location.lng" [latitude]="location.lat" [iconUrl]="icon">
+  </agm-marker>
+
+</agm-map>
+
+<!-- Diana's test form -->
+<!-- <div class="form-box">
+      <h4>Where Art Thou?</h4>
+      <mat-form-field>
+        <mat-label>Street Address</mat-label>
+        <input matInput type='text' [(ngModel)]='location.address_level_1' class="form-box" placeholder='Office, Apt, Home, Street'>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>City</mat-label>
+        <input matInput type='text'  [(ngModel)]='location.address_level_2' class='form-box' placeholder='City'/>
+      </mat-form-field>
+  
+      <mat-form-field>
+          <mat-label>State</mat-label>
+        <input matInput type='text' [(ngModel)]='location.address_state' class='form-box' placeholder='State'>
+      </mat-form-field>
+      
+      <mat-form-field>
+          <mat-label>Zip</mat-label>
+        <input matInput [(ngModel)]='location.address_zip' class='form-box' placeholder='Zip'>
+      </mat-form-field>
+  
+      <button mat-button (click)='updateOnMap()' type="submit">Search</button>
+</div> -->

@@ -1,71 +1,84 @@
-.form-box {
-    display: flex;
-    height: 95vh;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #2483A2 0%, #00BCAB 100%);
-}
-
-form {
+/* angular material code for first form */
+div.checkbox-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 5px solid #00BCAB;
-    border-radius: 5%;
-    height: 45%;
-    width: 60%;
-    padding: 2%;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-mat-form-field {
-    font-size: inherit;
-    font-weight: 400;
-    line-height: 1.125;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-}
-
-button {
-    background-color: #00BCAB;
-    font-family: 'Tomorrow', sans-serif;
-    color: white;
-}
-
-.form-box {
-    display: flex;
-    height: 95vh;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #2483a2 0%, #00bcab 100%);
-}
-​
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 5px solid #00BCAB;
-    border-radius: 5%;
-    height: 45%;
-    width: 60%;
-    padding: 2%;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-​
-mat-form-field {
-    font-size: inherit;
-    font-weight: 400;
-    line-height: 1.125;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-}
-​
-button {
-    background-color: #00BCAB;
-    font-family: 'Tomorrow', sans-serif;
-    color: white;
-}
-​
-img {
-    background-image: url(https://image.maps.cit.api.here.com/mia/1.6/mapview?app_id=yOObhmJUPCw8WqIwo2rE&app_code=NQJwKCsLtC3mWJ4NE0qrXQ&ci=Detroit,+MI&h=300&w=300&z=14&f=0&style=alps);
-}
+    margin-top: 100px; 
+ }
+ 
+ ::ng-deep .mat-checkbox .mat-checkbox-frame {
+     background-color: white;
+     border-color: #00BCAB;
+ }
+ 
+ ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+     background-color:  #00BCAB!important; 
+ }
+ 
+ p {
+     display: flex;
+     justify-content: center;
+     margin-top: 40px;
+ }
+ 
+ 
+ div.form-container {
+     margin-top:50px;
+     display: flex;
+     justify-content: center;
+     width: 100%;
+ }
+ 
+ form {
+     display: flex;
+     flex-direction: column;
+     width: 500px;
+     height: auto;
+     padding: 65px;
+     border: 1px solid #00BCAB;
+     background-color: white;
+     font-family: 'Tomorrow', sans-serif;
+ }
+ 
+ .mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
+     margin-top: 25px;
+     color: white;
+     padding: 10px;
+     border: none;
+     background-color:#00BCAB;
+     font-size:15px;
+     font-family: 'Tomorrow', sans-serif;
+ }
+ 
+ 
+ /* angular material code for first form */
+ /* ::ng-deep .mat-checkbox .mat-checkbox-frame {
+     background-color: white;
+     border-color: #00BCAB;
+ }
+ 
+ ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+     background-color:  #00BCAB!important; 
+ } */
+ 
+ /* p {
+     font-family: Roboto,"Helvetica Neue",sans-serif;
+ } */
+ 
+ /* mat-form-field {
+     display: flex;
+     justify-content: center;
+     align-content: center;
+     text-align: center;
+     color: #00BCAB;
+     font-family: Roboto,"Helvetica Neue",sans-serif;
+     font-size: inherit;
+     font-weight: 400;
+     line-height: 1.125;
+ }
+ 
+ mat-label {
+     width: 50%;
+     color:darkgray;
+ } */
+ 
+ 

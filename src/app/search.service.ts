@@ -7,42 +7,25 @@ import { ApiService } from './api.service';
 })
 export class SearchService {
 
-  private searchInterface: SearchInterface; 
-  private searchResults: any[] = []; 
+  private searchInterface: SearchInterface;
+  private searchResults: any[] = [];
+  location: any;
 
   constructor(private api: ApiService) { }
 
- 
-  // setOptions(options: SearchInterface) {
-  //   this.searchInterface = options;
-  //   this.searchResults = []; 
-  //   this.performSearch();
-  // }
 
-  
-  getOptions(): SearchInterface {
-    return this.searchInterface;
-  }
-
-
-  getSearchResults(): any[] {
-    return this.searchResults;
-  }
-
-
-  getCommuteOptions(name: string): any {
-    return this.searchResults.find(commuteroption => commuteroption.label.toLowerCase() === name.toLowerCase())
-  }
-
-
-  // private performSearch(): any {
-  //   this.api.getData(this.searchInterface).subscribe(this.handleResponse);
-  // }
-
-  
   private handleResponse = (response: any): void => {
     for (let hit of response["hits"]) {
       this.searchResults.push(hit.recipe);
     }
+  }
+
+  setLocation(location: any) {
+    this.location = location;
+    console.log(this.location)
+  }
+
+  getLocation() {
+    return this.location;
   }
 }

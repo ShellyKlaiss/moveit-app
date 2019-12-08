@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private search: SearchService, private router: Router) { }
+
+  location: any;
 
   ngOnInit() {
   }
+
+  // searchOptions(form) {
+  //   this.search.setOptions(form.value);
+
+  //   this.router.navigate(["results"]);
+  // }
+
+  sendLocation(form: any) {
+    this.search.setLocation(form)
+    this.router.navigate(["/results"])
+  }
+
+  // sendLocation() {
+  //   this.search.setLocation(this.location)
+  //   this.router.navigate(["/results"])
+  // }
 
 }

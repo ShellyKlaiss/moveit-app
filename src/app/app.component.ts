@@ -11,10 +11,8 @@ declare var H: any;
 export class AppComponent {
   title = 'moveIt-app';
 
-  constructor(public router: Router){
+  constructor(public router: Router) {
 
   }
-  
- 
-
 }
+

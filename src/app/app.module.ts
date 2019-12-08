@@ -23,17 +23,23 @@ import { ResultsComponent } from './results/results.component';
 import { ResultsInfoComponent } from './results-info/results-info.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MapComponent } from './map/map.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     ResultsComponent,
-    ResultsInfoComponent
+    ResultsInfoComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBVUka9trkKlUo-U2P7hn3CJY_jG594Cl4' }),
     FormsModule,
+    NgbModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -42,16 +48,18 @@ import { AppRoutingModule } from './app-routing.module';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-	  MatSelectModule,
-	  MatCardModule,
-	  MatRippleModule,
-	  MatDialogModule,
-	  MatToolbarModule,
-	  MatListModule,
-	  MatRadioModule,
-	  MatIconModule,
+    MatSelectModule,
+    MatCardModule,
+    MatRippleModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatListModule,
+    MatRadioModule,
+    MatIconModule,
   ],
-  providers: [],
+  providers: [
+    GoogleMapsAPIWrapper
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
