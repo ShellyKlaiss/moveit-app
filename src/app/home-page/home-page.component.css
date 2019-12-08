@@ -1,38 +1,46 @@
-.form-box {
+div {
+    margin-top:100px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 95vh;
-    background-color: white;
+    width: 100%;
 }
 
 form {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    height: 45%;
-    width: 60%;
-    padding: 2%;
-    border: 5px solid #00BCAB;
-    border-radius: 5%;
+    width: 80%;
+    padding: 50px;
+    border: 1px solid #00BCAB;
     background-color: white;
 }
 
-::ng-deep .mat-checkbox .mat-checkbox-frame {
+button {
+    width: 100%;
+    margin-top: 25px;
+    color: #00BCAB;
+    padding: 15px;
+    border: 1px solid #00BCAB;
+    background-color: white;
+    font-size:15px;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+
+/* angular material code for first form */
+/* ::ng-deep .mat-checkbox .mat-checkbox-frame {
     background-color: white;
     border-color: #00BCAB;
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
     background-color:  #00BCAB!important; 
-}
+} */
 
-p {
+/* p {
     font-family: Roboto,"Helvetica Neue",sans-serif;
-}
+} */
 
-mat-form-field {
+/* mat-form-field {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -47,12 +55,5 @@ mat-form-field {
 mat-label {
     width: 50%;
     color:darkgray;
-}
+} */
 
-button {
-    width: 50%;
-    color: white;
-    background-color: #00BCAB;
-    background: #00BCAB;
-    font-family: 'Tomorrow', sans-serif;
-}

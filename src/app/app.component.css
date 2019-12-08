@@ -16,6 +16,7 @@ a.is-active {
 
 span {
 	color: white;
+	font-weight:bold;
 	font-size: 30px;
 	font-family: 'Tomorrow', sans-serif;
 }
@@ -25,5 +26,7 @@ img {
 }
 
 mat-icon {
-	color: #A9EA82;
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
 }

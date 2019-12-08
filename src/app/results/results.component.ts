@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service'
 
 @Component({
   selector: 'app-results',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  location: any;
+
+  constructor(private search: SearchService) { }
 
   ngOnInit() {
+    this.location = this.search.getLocation();
+    console.log(this.location);
   }
 
 }
