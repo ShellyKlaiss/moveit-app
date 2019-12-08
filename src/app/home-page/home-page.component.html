@@ -1,21 +1,41 @@
+<div class="checkbox-container">
+	<mat-checkbox type="checkbox" [(ngModel)]="toggleLocation">
+		Would you like to use your current location?
+	</mat-checkbox>
+</div>
+
+<p>OR</p>
+
 <!-- form needs angular material added for styling -->
-<div>
+<div class="form-container">
 	<form #locationForm="ngForm" (ngSubmit)="sendLocation(locationForm.value)">
-		<label for="street">Street
-			<input type="text" id="street" name="street" ngModel>
-		</label>
-		<label for="city">City
-			<input type="text" id="city" name="city" ngModel>
-		</label>
-		<label for="state">State
-			<input type="text" id="state" name="state" ngModel>
-		</label>
-		<label for="zip">Zip Code
-			<input type="text" id="zip" name="zip" ngModel>
-		</label>
-		<button>Submit Your Location</button>
+		<mat-form-field>
+			<label for="street">
+				<input matInput placeholder="Street Name" type="text" id="street" name="street" ngModel>
+			</label>
+		</mat-form-field>
+		<mat-form-field>
+			<label for="city">
+				<input matInput placeholder="City Name" type="text" id="city" name="city" ngModel>
+			</label>
+		</mat-form-field>
+
+		<mat-form-field>
+			<label for="state">
+				<input matInput placeholder="State Name" type="text" id="state" name="state" ngModel>
+			</label>
+		</mat-form-field>
+
+		<mat-form-field>
+			<label for="zip">
+				<input matInput placeholder="Zip Code" type="text" id="zip" name="zip" ngModel>
+			</label>
+		</mat-form-field>
+
+		<button mat-flat-button>Submit Your Location</button>
 	</form>
 </div>
+
 
 <!-- First form of project -->
 <!-- <div class="form-box">
