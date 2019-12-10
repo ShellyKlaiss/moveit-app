@@ -1,4 +1,4 @@
-<agm-map [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
+<agm-map *ngIf="location" [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
   [zoomControl]="true" [(fitBounds)]='location.viewport'>
 
   <!-- Detroit / Current Location -->
