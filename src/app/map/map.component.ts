@@ -1,8 +1,6 @@
 import { Component, ViewChild, NgZone, OnInit, Input } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
-import { MouseEvent } from '@agm/core';
-import { AstTransformer } from '@angular/compiler/src/output/output_ast';
 
 declare let google: any;
 
@@ -37,6 +35,8 @@ interface Location {
 export class MapComponent implements OnInit {
   @Input() myLocation: any;
   geocoder: any;
+
+
 
   // Detroit - Current Location
   public location: Location = {
@@ -126,6 +126,9 @@ export class MapComponent implements OnInit {
     this.updateOnMap()
   }
 
+
+
+
   findLocation(address) {
     if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
     this.geocoder.geocode({
@@ -139,9 +142,6 @@ export class MapComponent implements OnInit {
           if (types.indexOf('locality') != -1) {
             this.location.address_level_2 = results[0].address_components[i].long_name
           }
-          // if (types.indexOf('country') != -1) {
-          //   this.location.address_country = results[0].address_components[i].long_name
-          // }
           if (types.indexOf('postal_code') != -1) {
             this.location.address_zip = results[0].address_components[i].long_name
           }
@@ -160,31 +160,31 @@ export class MapComponent implements OnInit {
 
         this.map.triggerResize()
       } else {
-        alert("Sorry, this search produced no results.");
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude} = position.coords;
+            this.location.lat = latitude;
+          this.location.lng = longitude;
+          this.location.marker.lat = latitude;
+          this.location.marker.lng = longitude;
+          this.location.marker.draggable = true;
+          });
+        }
       }
     })
   }
 
 
   updateOnMap() {
+    let currentLocation: string = ''
+    if (this.myLocation) {
 
-    let currentLocation: string = this.myLocation.street || ""
-    if (this.myLocation.city) currentLocation = currentLocation + " " + this.myLocation.city
-    if (this.myLocation.state) currentLocation = currentLocation + " " + this.myLocation.state
+      currentLocation = this.myLocation.street || ""
+      if (this.myLocation.city) currentLocation = currentLocation + " " + this.myLocation.city
+      if (this.myLocation.state) currentLocation = currentLocation + " " + this.myLocation.state
+    }
     this.findLocation(currentLocation);
-    // console.log(currentLocation);
   }
-
-  // Diana's test form updateOnMap function
-  // updateOnMap() {
-  //   console.log('updating')
-  //   let full_address: string = this.location.address_level_1 || ""
-  //   if (this.location.address_level_2) full_address = full_address + " " + this.location.address_level_2
-  //   if (this.location.address_state) full_address = full_address + " " + this.location.address_state
-  //   // if (this.location.address_country) full_address = full_address + " " + this.location.address_country
-  //   this.findLocation(full_address);
-  //   console.log(full_address);
-  // }
 
 
 
