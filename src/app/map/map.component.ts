@@ -36,6 +36,10 @@ export class MapComponent implements OnInit {
   @Input() myLocation: any;
   geocoder: any;
   loading: boolean = true;
+  public origin: any;
+  public destination: any;
+  dir: any;
+  show: boolean;
 
 
 
@@ -195,7 +199,17 @@ export class MapComponent implements OnInit {
     this.findLocation(currentLocation);
   }
 
+  showDirection({lat, lng}) {
+    this.origin = {
+      lat: this.location.lat,
+      lng: this.location.lng
 
-
+    }
+    this.destination = {
+      lat, lng
+    }
+  }
+    // this.show = true;
+    // console.log('Nav button clicked');
 
 }

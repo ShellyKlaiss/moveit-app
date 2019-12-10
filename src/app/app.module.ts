@@ -26,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './map/map.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBVUka9trkKlUo-U2P7hn3CJY_jG594Cl4' }),
+    AgmDirectionModule,
     FormsModule,
     NgbModule,
     HttpClientModule,
