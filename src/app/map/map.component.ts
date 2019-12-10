@@ -35,6 +35,7 @@ interface Location {
 export class MapComponent implements OnInit {
   @Input() myLocation: any;
   geocoder: any;
+  loading: boolean = true;
 
 
 
@@ -130,6 +131,21 @@ export class MapComponent implements OnInit {
 
 
   findLocation(address) {
+    if (!address) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const { latitude, longitude} = position.coords;
+          this.location.lat = latitude;
+          this.location.lng = longitude;
+          this.location.marker.lat = latitude;
+          this.location.marker.lng = longitude;
+          this.location.marker.draggable = true;
+          this.loading = false;
+        });
+      }
+    } else {
+
+    
     if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
     this.geocoder.geocode({
       'address': address
@@ -157,21 +173,14 @@ export class MapComponent implements OnInit {
           this.location.marker.draggable = true;
           this.location.viewport = results[0].geometry.viewport;
         }
-
+        this.loading = false;
+        
         this.map.triggerResize()
       } else {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(position => {
-            const { latitude, longitude} = position.coords;
-            this.location.lat = latitude;
-          this.location.lng = longitude;
-          this.location.marker.lat = latitude;
-          this.location.marker.lng = longitude;
-          this.location.marker.draggable = true;
-          });
-        }
+        
       }
     })
+  }
   }
 
 
