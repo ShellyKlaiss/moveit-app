@@ -11,10 +11,10 @@
 	<form #locationForm="ngForm" (ngSubmit)="sendLocation(locationForm.value)">
 		<mat-form-field>
 			<label for="street">
-				<input matInput placeholder="Street Name" type="text" id="street" name="street" ngModel>
+				<input matInput placeholder="Address" type="text" id="street" name="street" ngModel>
 			</label>
 		</mat-form-field>
-		<mat-form-field>
+		<!-- <mat-form-field>
 			<label for="city">
 				<input matInput placeholder="City Name" type="text" id="city" name="city" ngModel>
 			</label>
@@ -30,7 +30,7 @@
 			<label for="zip">
 				<input matInput placeholder="Zip Code" type="text" id="zip" name="zip" ngModel>
 			</label>
-		</mat-form-field>
+		</mat-form-field> -->
 
 		<button mat-flat-button>Submit Your Location</button>
 	</form>
