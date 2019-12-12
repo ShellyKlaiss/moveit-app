@@ -1,17 +1,18 @@
-<div class="checkbox-container">
-	<mat-checkbox type="checkbox" [(ngModel)]="toggleLocation">
-		Would you like to use your current location?
-	</mat-checkbox>
-</div>
-
-<p>OR</p>
-
 <!-- form needs angular material added for styling -->
 <div class="form-container">
 	<form #locationForm="ngForm" (ngSubmit)="sendLocation(locationForm.value)">
+
+		<div class="checkbox">
+			<mat-checkbox type="checkbox" [(ngModel)]="toggleLocation">
+				Would you like to share your location?
+			</mat-checkbox>
+		</div>
+				
+		<p>or</p>
+
 		<mat-form-field>
 			<label for="street">
-				<input matInput placeholder="Address" type="text" id="street" name="street" ngModel>
+				<input autocomplete="off" matInput placeholder="Address" type="text" id="street" name="street" ngModel>
 			</label>
 		</mat-form-field>
 		<!-- <mat-form-field>
@@ -32,27 +33,6 @@
 			</label>
 		</mat-form-field> -->
 
-		<button mat-flat-button>Submit Your Location</button>
+		<button mat-flat-button>Submit</button>
 	</form>
 </div>
-
-
-<!-- First form of project -->
-<!-- <div class="form-box">
-        <form>
-            <mat-checkbox type="checkbox"
-            [(ngModel)]="toggleLocation">
-            Would you like to use your current location?
-            </mat-checkbox>
-
-            <p>OR</p>
-
-            <mat-form-field >
-                    <mat-label>What is your location?</mat-label>
-                    <input matInput placeholder="Enter the address">
-            </mat-form-field>
-
-            <button mat-button routerLink="/results">Submit</button>
-            
-        </form>
-</div> -->
