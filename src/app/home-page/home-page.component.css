@@ -1,83 +1,63 @@
-/* angular material code for first form */
-div.checkbox-container {
-   display: flex;
-   justify-content: center;
-   margin-top: 100px; 
-}
-
-::ng-deep .mat-checkbox .mat-checkbox-frame {
-    background-color: white;
-    border-color: #00BCAB;
-}
-
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
-    background-color:  #00BCAB!important; 
-}
-
-p {
+.form-container { /* form container */
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    height: calc(100vh - 64px);
 }
+    form { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 75px 125px;
+        border: 3px solid #3176BD;
+        border-radius: 5px;
+    
+    }
 
-
-div.form-container {
-    margin-top:50px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+/* checkbox container */
+.checkbox {
+    height: 50px;
 }
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    height: auto;
-    padding: 65px;
-    border: 1px solid #00BCAB;
-    background-color: white;
-    font-family: 'Tomorrow', sans-serif;
-}
-
-.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
-    margin-top: 25px;
-    color: white;
-    padding: 10px;
-    border: none;
-    background-color:#00BCAB;
-    font-size:15px;
-    font-family: 'Tomorrow', sans-serif;
-}
+    ::ng-deep .mat-checkbox .mat-checkbox-frame { /* checkbox */
+        background-color: white;
+        border-color: #3176BD;
+    }
+        ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+            background-color:  #00BCAB!important; /* checkbox-checked */
+            transition: 0.4s;
+        }
+            ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
+                background-color: #00BCAB !important; /* overwrite the ripple overlay on hover and click */
+            }
 
 
-/* angular material code for first form */
-/* ::ng-deep .mat-checkbox .mat-checkbox-frame {
-    background-color: white;
-    border-color: #00BCAB;
-}
-
-::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
-    background-color:  #00BCAB!important; 
-} */
-
-/* p {
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-} */
-
-/* mat-form-field {
-    display: flex;
-    justify-content: center;
-    align-content: center;
+/* input container */
+mat-form-field {
     text-align: center;
-    color: #00BCAB;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-    font-size: inherit;
-    font-weight: 400;
-    line-height: 1.125;
+    color: #3176BD;
 }
+    ::ng-deep input.mat-input-element {
+        color: #00BCAB; /* input color class */
+    }
+        ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+            color: #3176BD !important; /* Change label color on focused */
+        }
+            ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+                background-color: #3176BD !important; /* underline border color on focused */
+            }
 
-mat-label {
-    width: 50%;
-    color:darkgray;
-} */
 
+/* button styling */
+.mat-flat-button {
+    border: 2px solid #3176BD;
+    color: #3176BD;
+    height: 50px;
+    width: 200px;
+}
+    .mat-flat-button:hover {
+        border: 2px solid #00BCAB;
+        background-color: #00BCAB;
+        color: white;
+        transition: 1s;
+    }
