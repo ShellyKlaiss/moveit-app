@@ -12,14 +12,14 @@
   <!-- Mogo Markers -->
   <agm-marker *ngFor="let location of locations" [label]="location.id" [title]="location.name"
     [longitude]="location.lng" [latitude]="location.lat" [iconUrl]="icon" (markerClick)="showDirection(location)">
-    <agm-info-window>
-      <strong>INFO WINDOW 2</strong>
-    </agm-info-window>
-  </agm-marker>
 
-  <!-- <agm-info-window #infoWindow>
-      <strong>window</strong><br>
-    </agm-info-window> -->
+    <!-- Info Window -->
+    <agm-info-window>
+      <strong>{{ location.name }}</strong>
+      <p>Docks: {{ location.docks }}</p>
+    </agm-info-window>
+
+  </agm-marker>
 
   <!-- Marker Direction Visual -->
   <agm-direction *ngIf="origin && destination" [origin]="origin" [destination]="destination"></agm-direction>
