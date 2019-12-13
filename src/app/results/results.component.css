@@ -1,0 +1,8 @@
+.main-container {
+    display: flex;
+    flex-wrap: row;
+}
+
+app-results-info {
+    flex-grow: 1;
+}

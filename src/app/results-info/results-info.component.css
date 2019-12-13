@@ -1,0 +1,27 @@
+.list-container {
+    border-left: 3px solid black;
+    height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+}
+    .list-item-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 1px solid black;
+        padding-left: 40px;
+        text-align: center;
+    }
+
+
+.name {
+    text-transform: uppercase;
+}
+
+.docks {
+    color: #00BCAB;
+}

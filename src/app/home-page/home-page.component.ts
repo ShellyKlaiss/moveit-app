@@ -16,20 +16,9 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
   }
 
-  // searchOptions(form) {
-  //   this.search.setOptions(form.value);
-
-  //   this.router.navigate(["results"]);
-  // }
-
   sendLocation(form: any) {
     this.search.setLocation(form)
     this.router.navigate(["/results"])
   }
-
-  // sendLocation() {
-  //   this.search.setLocation(this.location)
-  //   this.router.navigate(["/results"])
-  // }
 
 }

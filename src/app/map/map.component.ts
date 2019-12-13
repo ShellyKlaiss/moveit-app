@@ -16,10 +16,6 @@ interface Location {
   lng: number;
   viewport?: Object;
   zoom: number;
-  address_level_1?: string; //street
-  address_level_2?: string; //city
-  address_zip?: string;
-  address_state?: string;
   marker?: Marker;
 }
 
@@ -38,7 +34,6 @@ export class MapComponent implements OnInit {
   loading: boolean = true;
   public origin: any;
   public destination: any;
-  dir: any;
   show: boolean;
 
 
@@ -154,21 +149,7 @@ export class MapComponent implements OnInit {
     this.geocoder.geocode({
       'address': address
     }, (results, status) => {
-      console.log(results);
       if (status == google.maps.GeocoderStatus.OK) {
-        for (var i = 0; i < results[0].address_components.length; i++) {
-          let types = results[0].address_components[i].types
-          console.log(types);
-          if (types.indexOf('locality') != -1) {
-            this.location.address_level_2 = results[0].address_components[i].long_name
-          }
-          if (types.indexOf('postal_code') != -1) {
-            this.location.address_zip = results[0].address_components[i].long_name
-          }
-          if (types.indexOf('administrative_area_level_1') != -1) {
-            this.location.address_state = results[0].address_components[i].long_name
-          }
-        }
         if (results[0].geometry.location) {
           this.location.lat = results[0].geometry.location.lat();
           this.location.lng = results[0].geometry.location.lng();
@@ -191,10 +172,7 @@ export class MapComponent implements OnInit {
   updateOnMap() {
     let currentLocation: string = ''
     if (this.myLocation) {
-
-      currentLocation = this.myLocation.street || ""
-      if (this.myLocation.city) currentLocation = currentLocation + " " + this.myLocation.city
-      if (this.myLocation.state) currentLocation = currentLocation + " " + this.myLocation.state
+      currentLocation = this.myLocation.street 
     }
     this.findLocation(currentLocation);
   }
@@ -203,13 +181,14 @@ export class MapComponent implements OnInit {
     this.origin = {
       lat: this.location.lat,
       lng: this.location.lng
-
     }
     this.destination = {
       lat, lng
     }
   }
-    // this.show = true;
-    // console.log('Nav button clicked');
+
+  showWindow() {
+    console.log('window open');
+  }
 
 }
