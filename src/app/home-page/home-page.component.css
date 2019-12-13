@@ -36,6 +36,7 @@
 mat-form-field {
     text-align: center;
     color: #3176BD;
+    width: 400px;
 }
     ::ng-deep input.mat-input-element {
         color: #00BCAB; /* input color class */

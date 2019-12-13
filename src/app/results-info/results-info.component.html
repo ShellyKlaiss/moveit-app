@@ -1,1 +1,8 @@
-<p>results-info works!</p>
+<div class="list-container">
+    <div class="list-item-container" *ngFor="let location of locations">
+
+        <p class="name">{{ location.name }}</p>
+        <p class="docks">Docks: {{ location.docks }}</p>
+
+    </div>
+</div>
