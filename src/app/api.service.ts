@@ -14,14 +14,10 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  ngOnInit() {
-    this.http.get(this.url).toPromise().then(data => {
-      console.log(data);
-
-      for (let features in data)
-      if (data.hasOwnProperty(features))
-        this.mogoLocations.push(data[features])
-        console.log('true');
-    });
-  }
+  getMogoLocations() {
+    return this.http.get(this.url).toPromise().then((data:any) => {
+        this.mogoLocations = data.features;
+        return this.mogoLocations;
+  });
+}
 }
