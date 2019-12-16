@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ResultsComponent } from './results/results.component';
 import { ResultsInfoComponent } from './results-info/results-info.component';
+import { ApiService } from './api.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './map/map.component';
@@ -62,7 +63,7 @@ import { AgmDirectionModule } from 'agm-direction';
     MatIconModule,
   ],
   providers: [
-    GoogleMapsAPIWrapper
+    ApiService, GoogleMapsAPIWrapper
   ],
   bootstrap: [AppComponent]
 })

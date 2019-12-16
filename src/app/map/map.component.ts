@@ -9,7 +9,7 @@ interface Marker {
   lng: number;
   label?: string;
   draggable: boolean;
-}
+};
 
 interface Location {
   lat: number;
@@ -17,19 +17,20 @@ interface Location {
   viewport?: Object;
   zoom: number;
   marker?: Marker;
-}
+};
 
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
-
 })
 
 
 export class MapComponent implements OnInit {
+
   @Input() myLocation: any;
+
   geocoder: any;
   loading: boolean = true;
   public origin: any;
@@ -37,8 +38,7 @@ export class MapComponent implements OnInit {
   show: boolean;
 
 
-
-  // Detroit - Current Location
+  // Current Location
   public location: Location = {
     lat: 42.331429,
     lng: -83.045753,
@@ -50,6 +50,7 @@ export class MapComponent implements OnInit {
     zoom: 16.5
   };
 
+
   // Mogo Marker Icon
   icon = {
     url: 'http://www.clker.com/cliparts/4/D/0/e/2/t/bike-sign-red-hi.png',
@@ -57,7 +58,7 @@ export class MapComponent implements OnInit {
       width: 30,
       height: 30,
     }
-  }
+  };
 
   // Mogo Markers
   locations = [
@@ -107,10 +108,9 @@ export class MapComponent implements OnInit {
   ];
 
 
-
-
-
   @ViewChild(AgmMap, { static: true }) map: AgmMap;
+
+
 
   constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper) {
     this.mapsApiLoader = mapsApiLoader;
@@ -119,14 +119,12 @@ export class MapComponent implements OnInit {
     this.mapsApiLoader.load().then(() => {
       this.geocoder = new google.maps.Geocoder();
     });
-  }
+  };
+
 
   ngOnInit() {
-    this.location.marker.draggable = true;
     this.updateOnMap()
-  }
-
-
+  };
 
 
   findLocation(address) {
@@ -143,30 +141,25 @@ export class MapComponent implements OnInit {
         });
       }
     } else {
-
-    
-    if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
-    this.geocoder.geocode({
-      'address': address
-    }, (results, status) => {
-      if (status == google.maps.GeocoderStatus.OK) {
-        if (results[0].geometry.location) {
-          this.location.lat = results[0].geometry.location.lat();
-          this.location.lng = results[0].geometry.location.lng();
-          this.location.marker.lat = results[0].geometry.location.lat();
-          this.location.marker.lng = results[0].geometry.location.lng();
-          this.location.marker.draggable = true;
-          this.location.viewport = results[0].geometry.viewport;
-        }
-        this.loading = false;
-        
-        this.map.triggerResize()
-      } else {
-        
+        if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
+        this.geocoder.geocode({
+          'address': address
+        }, (results, status) => {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0].geometry.location) {
+              this.location.lat = results[0].geometry.location.lat();
+              this.location.lng = results[0].geometry.location.lng();
+              this.location.marker.lat = results[0].geometry.location.lat();
+              this.location.marker.lng = results[0].geometry.location.lng();
+              this.location.marker.draggable = true;
+              this.location.viewport = results[0].geometry.viewport;
+            }
+            this.loading = false;
+            this.map.triggerResize()
+          }
+        })
       }
-    })
-  }
-  }
+  };
 
 
   updateOnMap() {
@@ -175,7 +168,8 @@ export class MapComponent implements OnInit {
       currentLocation = this.myLocation.street 
     }
     this.findLocation(currentLocation);
-  }
+  };
+
 
   showDirection({lat, lng}) {
     this.origin = {
@@ -185,10 +179,10 @@ export class MapComponent implements OnInit {
     this.destination = {
       lat, lng
     }
-  }
+  };
 
   showWindow() {
     console.log('window open');
-  }
+  };
 
-}
+};

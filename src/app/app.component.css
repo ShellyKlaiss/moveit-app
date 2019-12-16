@@ -1,6 +1,7 @@
 .nav {
 	justify-content: space-between;
 	background-color: #00BCAB;
+	width: 100%;
 }
 
 a {
