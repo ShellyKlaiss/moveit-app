@@ -14,7 +14,6 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
     this.location = this.search.getLocation();
-    console.log(this.location);
   }
 
 }

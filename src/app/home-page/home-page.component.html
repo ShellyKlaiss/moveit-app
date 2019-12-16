@@ -3,7 +3,7 @@
 	<form #locationForm="ngForm" (ngSubmit)="sendLocation(locationForm.value)">
 
 		<div class="checkbox">
-			<mat-checkbox type="checkbox" [(ngModel)]="toggleLocation">
+			<mat-checkbox type="checkbox">
 				Would you like to share your location?
 			</mat-checkbox>
 		</div>
@@ -15,23 +15,6 @@
 				<input autocomplete="off" matInput placeholder="Address" type="text" id="street" name="street" ngModel>
 			</label>
 		</mat-form-field>
-		<!-- <mat-form-field>
-			<label for="city">
-				<input matInput placeholder="City Name" type="text" id="city" name="city" ngModel>
-			</label>
-		</mat-form-field>
-
-		<mat-form-field>
-			<label for="state">
-				<input matInput placeholder="State Name" type="text" id="state" name="state" ngModel>
-			</label>
-		</mat-form-field>
-
-		<mat-form-field>
-			<label for="zip">
-				<input matInput placeholder="Zip Code" type="text" id="zip" name="zip" ngModel>
-			</label>
-		</mat-form-field> -->
 
 		<button mat-flat-button>Submit</button>
 	</form>

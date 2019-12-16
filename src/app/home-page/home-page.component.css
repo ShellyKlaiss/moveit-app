@@ -1,52 +1,55 @@
-.form-container { /* form container */
+.form-container {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: calc(100vh - 64px);
 }
-    form { 
+    form {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 75px 125px;
-        border: 3px solid #3176BD;
-        border-radius: 5px;
-    
+        width: 100%;
+        height: 60%;
+        border-top: 3px solid #3176BD;
+        border-bottom: 3px solid #3176BD;
     }
-
-/* checkbox container */
-.checkbox {
-    height: 50px;
-}
-    ::ng-deep .mat-checkbox .mat-checkbox-frame { /* checkbox */
-        background-color: white;
-        border-color: #3176BD;
-    }
-        ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
-            background-color:  #00BCAB!important; /* checkbox-checked */
-            transition: 0.4s;
-        }
-            ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
-                background-color: #00BCAB !important; /* overwrite the ripple overlay on hover and click */
-            }
 
 
 /* input container */
 mat-form-field {
     text-align: center;
     color: #3176BD;
-    width: 400px;
+    width: 250px;
 }
+    /* input color class */
     ::ng-deep input.mat-input-element {
-        color: #00BCAB; /* input color class */
+        color: #00BCAB; 
     }
+        /* Change label color on focused */
         ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-            color: #3176BD !important; /* Change label color on focused */
-        }
+            color: #3176BD !important; 
+        }   
+            /* underline border color on focused */
             ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
-                background-color: #3176BD !important; /* underline border color on focused */
+                background-color: #3176BD !important; 
             }
+
+
+/* checkbox */
+::ng-deep .mat-checkbox .mat-checkbox-frame { 
+    background-color: white;
+    border-color: #3176BD;
+}   
+    /* checkbox-checked */
+    ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+        background-color:  #00BCAB!important; 
+        transition: 0.4s;
+    }   
+        /* overwrite the ripple overlay on hover and click */
+        ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
+            background-color: #00BCAB !important; 
+        }
 
 
 /* button styling */
@@ -62,3 +65,47 @@ mat-form-field {
         color: white;
         transition: 1s;
     }
+
+
+
+
+
+    /* MEDIA QUERIES */
+
+    @media screen and (min-width: 525px) {
+
+        form {
+            width: 90%;
+            height: 60%;
+            border: 3px solid #3176BD;
+            border-radius: 5px;
+        }
+
+        /* input container */
+        mat-form-field {
+            width: 400px;
+        }
+        
+    }
+
+
+
+    @media screen and (min-width: 800px) {
+
+        form {
+            width: 60%;
+            height: 60%;
+            border: 3px solid #3176BD;
+            border-radius: 5px;
+        }
+
+        /* input container */
+        mat-form-field {
+            width: 500px;
+        }
+        
+    }
+
+
+
+

@@ -9,9 +9,11 @@
     </agm-info-window>
   </agm-marker>
 
+  
   <!-- Mogo Markers -->
   <agm-marker *ngFor="let location of locations" [label]="location.id" [title]="location.name"
     [longitude]="location.lng" [latitude]="location.lat" [iconUrl]="icon" (markerClick)="showDirection(location)">
+
 
     <!-- Info Window -->
     <agm-info-window>
@@ -20,6 +22,7 @@
     </agm-info-window>
 
   </agm-marker>
+
 
   <!-- Marker Direction Visual -->
   <agm-direction *ngIf="origin && destination" [origin]="origin" [destination]="destination"></agm-direction>
