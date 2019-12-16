@@ -1,6 +1,7 @@
 import { Component, ViewChild, NgZone, OnInit, Input } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
+import { ApiService } from '../api.service';
 
 declare let google: any;
 
@@ -36,6 +37,7 @@ export class MapComponent implements OnInit {
   public origin: any;
   public destination: any;
   show: boolean;
+  mogoLocations: any[] = [];
 
 
   // Current Location
@@ -60,7 +62,6 @@ export class MapComponent implements OnInit {
     }
   };
 
-  // Mogo Markers
   locations = [
     { id: 1, name: 'Cass Ave & Gilmour Mall', docks: 15, lat: 42.3603014, lng: -83.06939720000001, distance: '' },
     { id: 2, name: 'Cass Ave & W Hancock St', docks: 15, lat: 42.354775399999994, lng: -83.0662076, distance: '' },
@@ -112,7 +113,7 @@ export class MapComponent implements OnInit {
 
 
 
-  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper) {
+  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private api: ApiService) {
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
@@ -124,6 +125,10 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.updateOnMap()
+
+    this.api.getMogoLocations().then(data => {
+      this.mogoLocations = data
+    });
   };
 
 
