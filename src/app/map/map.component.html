@@ -3,7 +3,7 @@
 
   <!-- Current Location -->
   <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
-    [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'>
+    [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)' (markerClick)="closeMarker(location.marker)">
     <agm-info-window>
       <strong>INFO WINDOW</strong>
     </agm-info-window>
