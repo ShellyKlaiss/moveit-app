@@ -63,7 +63,7 @@ export class MapComponent implements OnInit {
 
   // Mogo Marker Icon
   icon = {
-    url: 'http://www.clker.com/cliparts/4/D/0/e/2/t/bike-sign-red-hi.png',
+    url: '../assets/images/moveItBike.png',
     scaledSize: {
       width: 30,
       height: 30,
@@ -144,7 +144,7 @@ export class MapComponent implements OnInit {
     if (!address) {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-          const { latitude, longitude} = position.coords;
+          const { latitude, longitude } = position.coords;
           this.location.lat = latitude;
           this.location.lng = longitude;
           this.location.marker.lat = latitude;
@@ -154,37 +154,37 @@ export class MapComponent implements OnInit {
         });
       }
     } else {
-        if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
-        this.geocoder.geocode({
-          'address': address
-        }, (results, status) => {
-          if (status == google.maps.GeocoderStatus.OK) {
-            if (results[0].geometry.location) {
-              this.location.lat = results[0].geometry.location.lat();
-              this.location.lng = results[0].geometry.location.lng();
-              this.location.marker.lat = results[0].geometry.location.lat();
-              this.location.marker.lng = results[0].geometry.location.lng();
-              this.location.marker.draggable = true;
-              this.location.viewport = results[0].geometry.viewport;
-            }
-            this.loading = false;
-            this.map.triggerResize()
+      if (!this.geocoder) this.geocoder = new google.maps.Geocoder()
+      this.geocoder.geocode({
+        'address': address
+      }, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0].geometry.location) {
+            this.location.lat = results[0].geometry.location.lat();
+            this.location.lng = results[0].geometry.location.lng();
+            this.location.marker.lat = results[0].geometry.location.lat();
+            this.location.marker.lng = results[0].geometry.location.lng();
+            this.location.marker.draggable = true;
+            this.location.viewport = results[0].geometry.viewport;
           }
-        })
-      }
+          this.loading = false;
+          this.map.triggerResize()
+        }
+      })
+    }
   };
 
 
   updateOnMap() {
     let currentLocation: string = ''
     if (this.myLocation) {
-      currentLocation = this.myLocation.street 
+      currentLocation = this.myLocation.street
     }
     this.findLocation(currentLocation);
   };
 
 
-  showDirection({lat, lng}) {
+  showDirection({ lat, lng }) {
     this.origin = {
       lat: this.location.lat,
       lng: this.location.lng
