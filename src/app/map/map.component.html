@@ -17,8 +17,9 @@
 
     <!-- Info Window -->
     <agm-info-window>
-      <strong>{{ location.name }}</strong>
-      <p>Docks: {{ location.docks }}</p>
+      <strong>{{ location.attributes.name }}</strong>
+      <p>Docks: {{ location.attributes.docks }}</p>
+      <p>Distance: {{ location.distance }}</p>
     </agm-info-window>
 
   </agm-marker>
