@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { MogoService } from '../mogo.service';
+import { QlineService } from '../qline.service';
 
 @Component({
   selector: 'app-results-info',
@@ -9,16 +10,21 @@ import { ApiService } from '../api.service';
 export class ResultsInfoComponent implements OnInit {
 
   mogoLocations: any[] = [];
+  qlineLocations: any[] = [];
 
 
-  constructor(private api: ApiService) {
+  constructor(private mogo: MogoService, private qline: QlineService) {
 
   }
 
   ngOnInit() {
-      this.api.getMogoLocations().then(data => {
+      this.mogo.getMogoLocations().then(data => {
       this.mogoLocations = data
-    });
+    })
+
+    this.qline.getQlineLocations().then(data => {
+    this.qlineLocations = data
+    })
   }
 
 }

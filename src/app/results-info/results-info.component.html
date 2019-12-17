@@ -1,8 +1,15 @@
 <div class="list-container">
-    <div class="list-item-container" *ngFor="let location of mogoLocations">
+    <div class="mogo-item-container" *ngFor="let location of mogoLocations">
 
         <p class="name">{{ location.attributes.name }}</p>
-        <p class="docks">Docks: {{ location.attributes.docks }}</p>
+        <p class="attribute">Docks: {{ location.attributes.docks }}</p>
+
+    </div>
+    <div class="qline-item-container" *ngFor="let qlocation of qlineLocations">
+
+        <p class="name">{{ qlocation.attributes.name }}</p>
+        <p class="attribute">Direction: {{ qlocation.attributes.direction }}</p>
+        <p class="attribute">Location: {{ qlocation.attributes.location }}</p>
 
     </div>
 </div>
