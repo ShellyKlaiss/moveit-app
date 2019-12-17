@@ -1,8 +1,8 @@
 <div class="list-container">
-    <div class="list-item-container" *ngFor="let location of locations">
+    <div class="list-item-container" *ngFor="let location of mogoLocations">
 
-        <p class="name">{{ location.name }}</p>
-        <p class="docks">Docks: {{ location.docks }}</p>
+        <p class="name">{{ location.attributes.name }}</p>
+        <p class="docks">Docks: {{ location.attributes.docks }}</p>
 
     </div>
 </div>
