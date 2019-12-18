@@ -1,22 +1,31 @@
-<agm-map [hidden]="loading" [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
-  [zoomControl]="true" [(fitBounds)]='location.viewport'>
+<agm-map [hidden]="loading" [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom"
+  [disableDefaultUI]="true" [zoomControl]="true" [(fitBounds)]='location.viewport'>
 
   <!-- Current Location -->
   <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
-    [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'>
+    [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'
+    (markerClick)="closeMarker(location.marker)">
+    
+    <agm-info-window>
+      <strong>You Are Here</strong>
+    </agm-info-window>
+    
   </agm-marker>
 
-  
+
   <!-- Mogo Markers -->
   <agm-marker *ngFor="let location of mogoLocations" [title]="location.attributes.name"
-    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="mogoIcon">
 
+    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="mogoIcon">
+    (markerClick)="showDirection(location.geometry)">
 
     <!-- Info Window -->
     <agm-info-window>
       <strong>{{ location.attributes.name }}</strong>
       <p><span>Docks: </span>{{ location.attributes.docks }}</p>
+      <p>Docks: {{ location.attributes.docks }}</p>
     </agm-info-window>
+    
   </agm-marker>
 
 
@@ -31,6 +40,7 @@
       <p><span>Direction: </span>{{ qlocation.attributes.direction }}</p>
       <p><span>Location: </span>{{ qlocation.attributes.location }}</p>
     </agm-info-window>
+    
   </agm-marker>
 
 
