@@ -65,7 +65,6 @@ export class MapComponent implements OnInit {
     }
   };
 
-
   // Qline Marker Icon
   qlineIcon = {
     url: 'https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_train-512.png',
