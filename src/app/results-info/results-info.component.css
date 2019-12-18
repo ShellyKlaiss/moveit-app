@@ -6,7 +6,18 @@
     flex-direction: column;
     overflow-y: auto;
 }
-    .list-item-container {
+    .mogo-item-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 1px solid black;
+        padding-left: 40px;
+        text-align: center;
+    }
+
+    .qline-item-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,6 +33,6 @@
     text-transform: uppercase;
 }
 
-.docks {
+.attribute {
     color: #00BCAB;
 }

@@ -5,25 +5,34 @@
   <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
     [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'
     (markerClick)="closeMarker(location.marker)">
-    <agm-info-window>
-      <strong>You Are Here</strong>
-    </agm-info-window>
   </agm-marker>
 
 
   <!-- Mogo Markers -->
   <agm-marker *ngFor="let location of mogoLocations" [title]="location.attributes.name"
-    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="icon"
-    (markerClick)="showDirection(location.geometry)">
-
+    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="mogoIcon">
 
     <!-- Info Window -->
     <agm-info-window>
       <strong>{{ location.attributes.name }}</strong>
-      <p>Docks: {{ location.attributes.docks }}</p>
-      <p>Distance: {{ location.distance }}</p>
+      <p><span>Docks: </span>{{ location.attributes.docks }}</p>
     </agm-info-window>
+    
+  </agm-marker>
 
+
+  <!-- Qline Markers -->
+  <agm-marker *ngFor="let qlocation of qlineLocations" [title]="qlocation.attributes.name"
+    [longitude]="qlocation.geometry.x" [latitude]="qlocation.geometry.y" [iconUrl]="qlineIcon">
+
+
+    <!-- Info Window -->
+    <agm-info-window>
+      <strong>{{ qlocation.attributes.name }}</strong>
+      <p><span>Direction: </span>{{ qlocation.attributes.direction }}</p>
+      <p><span>Location: </span>{{ qlocation.attributes.location }}</p>
+    </agm-info-window>
+    
   </agm-marker>
 
 

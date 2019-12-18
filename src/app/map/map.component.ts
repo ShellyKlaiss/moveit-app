@@ -1,7 +1,8 @@
 import { Component, ViewChild, NgZone, OnInit, Input } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
-import { ApiService } from '../api.service';
+import { MogoService } from '../mogo.service';
+import { QlineService } from '../qline.service';
 
 declare let google: any;
 
@@ -38,6 +39,7 @@ export class MapComponent implements OnInit {
   public destination: any;
   show: boolean;
   mogoLocations: any[] = [];
+  qlineLocations : any[] = [];
   geometry: any;
 
 
@@ -55,7 +57,7 @@ export class MapComponent implements OnInit {
 
 
   // Mogo Marker Icon
-  icon = {
+  mogoIcon = {
     url: '../assets/images/moveItBike.png',
     scaledSize: {
       width: 30,
@@ -63,11 +65,22 @@ export class MapComponent implements OnInit {
     }
   };
 
+  // Qline Marker Icon
+  qlineIcon = {
+    url: 'https://cdn0.iconfinder.com/data/icons/citycons/150/Citycons_train-512.png',
+    scaledSize: {
+      width: 30,
+      height: 30,
+    }
+  };
+
+
 
   @ViewChild(AgmMap, { static: true }) map: AgmMap;
 
 
-  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private api: ApiService) {
+
+  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private mogo: MogoService, private qline: QlineService) {
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
@@ -81,8 +94,14 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.updateOnMap()
 
-    this.api.getMogoLocations().then(data => {
+    //Pushes Data from the Mogo API to our Map Component
+    this.mogo.getMogoLocations().then(data => {
       this.mogoLocations = data
+    });
+
+    //Pushes Data from the Qline API to our Map Component
+    this.qline.getQlineLocations().then(data => {
+      this.qlineLocations = data
     });
   };
 
@@ -142,31 +161,47 @@ export class MapComponent implements OnInit {
     }
   };
 
+  // closeMarker({ lat, lng }) {
+  //   let closest = -1;
+  //   for (let i = 0; i < this.locations.length; i++) {
+  //     let radius = 3958.8; // Radius of the Earth in miles
+  //     const rlat1 = this.location.marker.lat * (Math.PI / 180); // Convert degrees to radians
+  //     const rlat2 = this.locations[i].lat * (Math.PI / 180); // Convert degrees to radians
+  //     const difflat = rlat2 - rlat1; // Radian difference (latitudes)
+  //     const difflon = (this.locations[i].lng - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
 
-  closeMarker({ lat, lng }) {
-    let closest = -1;
-    for (let i = 0; i < this.mogoLocations.length; i++) {
-      let radius = 3958.8; // Radius of the Earth in miles
-      const rlat1 = this.location.marker.lat * (Math.PI / 180); // Convert degrees to radians
-      const rlat2 = this.mogoLocations[i].geometry.y * (Math.PI / 180); // Convert degrees to radians
-      const difflat = rlat2 - rlat1; // Radian difference (latitudes)
-      const difflon = (this.mogoLocations[i].geometry.x - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
+  // closeMarker({ lat, lng }) {
+  //   let closest = -1;
+  //   for (let i = 0; i < this.mogoLocations.length; i++) {
+      // let radius = 3958.8; // Radius of the Earth in miles
+      // const rlat1 = this.location.marker.lat * (Math.PI / 180); // Convert degrees to radians
+      // const rlat2 = this.mogoLocations[i].geometry.y * (Math.PI / 180); // Convert degrees to radians
+      // const difflat = rlat2 - rlat1; // Radian difference (latitudes)
+      // const difflon = (this.mogoLocations[i].geometry.x - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
 
-      const d = 2 * radius * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
-      const miles = d.toFixed(3);
+  //     const d = 2 * radius * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
+  //     const miles = d.toFixed(3);
 
-      console.log(miles);
+  //     console.log(miles);
 
-      this.mogoLocations[i].distance = miles;
-      if (closest == -1 || miles < this.mogoLocations[closest].distance) {
-        closest = i;
-      }
-    }
+  //     this.locations[i].distance = miles;
+  //     if (closest == -1 || miles < this.locations[closest].distance) {
+  //       closest = i;
+  //     }
+  //   }
+
+  //   console.log(this.locations[closest].name);
+  // }
+    //   this.mogoLocations[i].distance = miles;
+    //   if (closest == -1 || miles < this.mogoLocations[closest].distance) {
+    //     closest = i;
+    //   }
+    // }
 
     // console.log(this.mogoLocations[closest].attributes.name);
-    console.log(this.mogoLocations);
+    // console.log(this.mogoLocations);
 
-  }
+  // }
 
   showWindow() {
     console.log('window open');

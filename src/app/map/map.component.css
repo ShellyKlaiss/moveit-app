@@ -2,3 +2,12 @@ agm-map {
     height: calc(100vh - 64px);
     width: 1000px;
 }
+
+strong {
+    font-weight: 800;
+}
+
+span {
+    font-weight: 400;
+    text-transform: uppercase;
+}
