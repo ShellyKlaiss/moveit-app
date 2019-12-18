@@ -39,7 +39,11 @@ export class MapComponent implements OnInit {
   public destination: any;
   show: boolean;
   mogoLocations: any[] = [];
+<<<<<<< HEAD
   qlineLocations : any[] = [];
+=======
+  geometry: any;
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
 
 
   // Current Location
@@ -64,6 +68,7 @@ export class MapComponent implements OnInit {
     }
   };
 
+<<<<<<< HEAD
 
   // Qline Marker Icon
   qlineIcon = {
@@ -75,12 +80,18 @@ export class MapComponent implements OnInit {
   };
 
 
+=======
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
 
   @ViewChild(AgmMap, { static: true }) map: AgmMap;
 
 
+<<<<<<< HEAD
 
   constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private mogo: MogoService, private qline: QlineService) {
+=======
+  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private api: ApiService) {
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
@@ -88,6 +99,7 @@ export class MapComponent implements OnInit {
       this.geocoder = new google.maps.Geocoder();
     });
   };
+
 
 
   ngOnInit() {
@@ -149,16 +161,18 @@ export class MapComponent implements OnInit {
   };
 
 
-  showDirection({ lat, lng }) {
+  showDirection({ y: lat, x: lng }) {
     this.origin = {
       lat: this.location.lat,
       lng: this.location.lng
     }
     this.destination = {
-      lat, lng
+      lat,
+      lng,
     }
   };
 
+<<<<<<< HEAD
   // closeMarker({ lat, lng }) {
   //   let closest = -1;
   //   for (let i = 0; i < this.locations.length; i++) {
@@ -167,12 +181,24 @@ export class MapComponent implements OnInit {
   //     const rlat2 = this.locations[i].lat * (Math.PI / 180); // Convert degrees to radians
   //     const difflat = rlat2 - rlat1; // Radian difference (latitudes)
   //     const difflon = (this.locations[i].lng - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
+=======
+
+  closeMarker({ lat, lng }) {
+    let closest = -1;
+    for (let i = 0; i < this.mogoLocations.length; i++) {
+      let radius = 3958.8; // Radius of the Earth in miles
+      const rlat1 = this.location.marker.lat * (Math.PI / 180); // Convert degrees to radians
+      const rlat2 = this.mogoLocations[i].geometry.y * (Math.PI / 180); // Convert degrees to radians
+      const difflat = rlat2 - rlat1; // Radian difference (latitudes)
+      const difflon = (this.mogoLocations[i].geometry.x - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
 
   //     const d = 2 * radius * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
   //     const miles = d.toFixed(3);
 
   //     console.log(miles);
 
+<<<<<<< HEAD
   //     this.locations[i].distance = miles;
   //     if (closest == -1 || miles < this.locations[closest].distance) {
   //       closest = i;
@@ -181,6 +207,18 @@ export class MapComponent implements OnInit {
 
   //   console.log(this.locations[closest].name);
   // }
+=======
+      this.mogoLocations[i].distance = miles;
+      if (closest == -1 || miles < this.mogoLocations[closest].distance) {
+        closest = i;
+      }
+    }
+
+    // console.log(this.mogoLocations[closest].attributes.name);
+    console.log(this.mogoLocations);
+
+  }
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
 
   showWindow() {
     console.log('window open');

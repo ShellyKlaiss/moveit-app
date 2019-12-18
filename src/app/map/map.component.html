@@ -1,21 +1,39 @@
-<agm-map [hidden]="loading" [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom" [disableDefaultUI]="true"
-  [zoomControl]="true" [(fitBounds)]='location.viewport'>
+<agm-map [hidden]="loading" [(latitude)]="location.lat" [(longitude)]="location.lng" [(zoom)]="location.zoom"
+  [disableDefaultUI]="true" [zoomControl]="true" [(fitBounds)]='location.viewport'>
 
   <!-- Current Location -->
   <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
+<<<<<<< HEAD
     [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'>
+=======
+    [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'
+    (markerClick)="closeMarker(location.marker)">
+    <agm-info-window>
+      <strong>You Are Here</strong>
+    </agm-info-window>
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
   </agm-marker>
 
-  
+
   <!-- Mogo Markers -->
   <agm-marker *ngFor="let location of mogoLocations" [title]="location.attributes.name"
+<<<<<<< HEAD
     [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="mogoIcon">
+=======
+    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="icon"
+    (markerClick)="showDirection(location.geometry)">
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
 
 
     <!-- Info Window -->
     <agm-info-window>
       <strong>{{ location.attributes.name }}</strong>
+<<<<<<< HEAD
       <p><span>Docks: </span>{{ location.attributes.docks }}</p>
+=======
+      <p>Docks: {{ location.attributes.docks }}</p>
+      <p>Distance: {{ location.distance }}</p>
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
     </agm-info-window>
   </agm-marker>
 

@@ -2,6 +2,7 @@
     <div class="mogo-item-container" *ngFor="let location of mogoLocations">
 
         <p class="name">{{ location.attributes.name }}</p>
+<<<<<<< HEAD
         <p class="attribute">Docks: {{ location.attributes.docks }}</p>
 
     </div>
@@ -10,6 +11,10 @@
         <p class="name">{{ qlocation.attributes.name }}</p>
         <p class="attribute">Direction: {{ qlocation.attributes.direction }}</p>
         <p class="attribute">Location: {{ qlocation.attributes.location }}</p>
+=======
+        <p class="docks">Docks: {{ location.attributes.docks }}</p>
+        <p class="distance">Distance: {{ location.distance }}</p>
+>>>>>>> 4d7163a5d79fc68fa0691dc661d5bfd65ff01f3e
 
     </div>
 </div>
