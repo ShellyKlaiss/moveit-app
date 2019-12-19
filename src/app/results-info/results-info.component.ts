@@ -11,6 +11,7 @@ export class ResultsInfoComponent implements OnInit {
 
   mogoLocations: any[] = [];
   qlineLocations: any[] = [];
+  combinedArrays: any[] = [];
 
 
   constructor(private mogo: MogoService, private qline: QlineService) {

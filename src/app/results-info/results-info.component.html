@@ -3,7 +3,6 @@
 
         <p class="name">{{ location.attributes.name }}</p>
         <p class="attribute">Docks: {{ location.attributes.docks }}</p>
-        <p class="distance">Distance: {{ location.distance }}</p>
 
     </div>
     <div class="qline-item-container" *ngFor="let qlocation of qlineLocations">
@@ -11,7 +10,6 @@
         <p class="name">{{ qlocation.attributes.name }}</p>
         <p class="attribute">Direction: {{ qlocation.attributes.direction }}</p>
         <p class="attribute">Location: {{ qlocation.attributes.location }}</p>
-        <!-- <p class="distance">Distance: {{ location.distance }}</p> -->
 
     </div>
 </div>
