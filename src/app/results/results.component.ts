@@ -9,11 +9,16 @@ import { SearchService } from '../search.service'
 export class ResultsComponent implements OnInit {
 
   location: any;
+  combinedArray: any[] = [];
 
   constructor(private search: SearchService) { }
 
   ngOnInit() {
     this.location = this.search.getLocation();
+  }
+
+  onCombined(arrayData) {
+    this.combinedArray = arrayData;
   }
 
 }

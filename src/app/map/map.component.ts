@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgZone, OnInit, Input } from '@angular/core';
+import { Component, ViewChild, NgZone, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { MogoService } from '../mogo.service';
@@ -32,11 +32,13 @@ interface Location {
 export class MapComponent implements OnInit {
 
   @Input() myLocation: any;
+  @Output() combined = new EventEmitter<any[]>();
 
   geocoder: any;
   loading: boolean = true;
   public origin: any;
   public destination: any;
+  public travelMode: string = 'WALKING';
   show: boolean;
   mogoLocations: any[] = [];
   qlineLocations : any[] = [];
@@ -164,7 +166,9 @@ export class MapComponent implements OnInit {
     }
   };
 
-  
+  setPanel(){
+    return document.querySelector('#myPanel'); 
+  }
 
   closeLocation({ x, y }) {
     let closest = -1;
@@ -186,10 +190,12 @@ export class MapComponent implements OnInit {
       }
     }
     this.showDirection({ y, x});
-    console.log(this.combinedArrays[closest].attributes.name);
-    // console.log(this.co);
+    this.combinedArrays.sort((a, b) => (a.distance - b.distance));
+    this.combined.emit(this.combinedArrays);
+
 
   }
+
 
   showWindow() {
     console.log('window open');

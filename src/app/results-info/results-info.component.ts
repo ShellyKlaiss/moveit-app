@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { MogoService } from '../mogo.service';
 import { QlineService } from '../qline.service';
 
@@ -7,24 +7,23 @@ import { QlineService } from '../qline.service';
   templateUrl: './results-info.component.html',
   styleUrls: ['./results-info.component.css']
 })
-export class ResultsInfoComponent implements OnInit {
+export class ResultsInfoComponent implements OnChanges  {
 
-  mogoLocations: any[] = [];
-  qlineLocations: any[] = [];
+  @Input() combinedArray: any[];
+  filteredData: any[];
+  mogoShow: boolean = false;
 
 
   constructor(private mogo: MogoService, private qline: QlineService) {
 
   }
 
-  ngOnInit() {
-      this.mogo.getMogoLocations().then(data => {
-      this.mogoLocations = data
-    })
+  ngOnChanges() {
+    this.filteredData = this.combinedArray.slice(0, 5);
 
-    this.qline.getQlineLocations().then(data => {
-    this.qlineLocations = data
-    })
+    if (this.filteredData.hasOwnProperty('docks')) {
+      this.mogoShow = true;
+    }
   }
 
 }
