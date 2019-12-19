@@ -3,10 +3,6 @@ agm-map {
     width: 1000px;
 }
 
-#myPanel {
-    flex-grow: 1;
-}
-
 strong {
     font-weight: 800;
 }
