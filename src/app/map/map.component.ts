@@ -161,7 +161,7 @@ export class MapComponent implements OnInit {
     }
   };
 
-  closeMarker({ lat, lng }) {
+  closeMogo({ lat, lng }) {
     let closest = -1;
     for (let i = 0; i < this.mogoLocations.length; i++) {
       let radius = 3958.8; // Radius of the Earth in miles
@@ -184,6 +184,36 @@ export class MapComponent implements OnInit {
     console.log(this.mogoLocations[closest].attributes.name);
     console.log(this.mogoLocations);
 
+  }
+
+  closeQline({ lat, lng }) {
+    let closest = -1;
+    for (let i = 0; i < this.qlineLocations.length; i++) {
+      let radius = 3958.8; // Radius of the Earth in miles
+      const rlat1 = this.location.marker.lat * (Math.PI / 180); // Convert degrees to radians
+      const rlat2 = this.qlineLocations[i].geometry.y * (Math.PI / 180); // Convert degrees to radians
+      const difflat = rlat2 - rlat1; // Radian difference (latitudes)
+      const difflon = (this.qlineLocations[i].geometry.x - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
+
+      const d = 2 * radius * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
+      const miles = d.toFixed(3);
+
+      console.log(miles);
+
+      this.qlineLocations[i].distance = miles;
+      if (closest == -1 || miles < this.qlineLocations[closest].distance) {
+        closest = i;
+      }
+    }
+
+    console.log(this.qlineLocations[closest].attributes.name);
+    console.log(this.qlineLocations);
+
+  }
+
+  closeMarker({lat, lng}) {
+    this.closeMogo({lat, lng});
+    this.closeQline({lat, lng});
   }
 
   showWindow() {
