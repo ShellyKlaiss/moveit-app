@@ -16,19 +16,25 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MapComponent } from './map/map.component';
 import { ResultsComponent } from './results/results.component';
 import { ResultsInfoComponent } from './results-info/results-info.component';
 import { MogoService } from './mogo.service';
 import { QlineService } from './qline.service';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MapComponent } from './map/map.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';
+
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './loader.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './loader.interceptor';
 
 
 
@@ -36,9 +42,10 @@ import { AgmDirectionModule } from 'agm-direction';
   declarations: [
     AppComponent,
     HomePageComponent,
+    MapComponent,
     ResultsComponent,
     ResultsInfoComponent,
-    MapComponent
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +69,11 @@ import { AgmDirectionModule } from 'agm-direction';
     MatListModule,
     MatRadioModule,
     MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [
-    MogoService, QlineService, GoogleMapsAPIWrapper
+    MogoService, QlineService, GoogleMapsAPIWrapper, , LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

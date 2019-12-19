@@ -46,6 +46,7 @@ export class MapComponent implements OnInit {
   geometry: any;
 
 
+
   // Current Location
   public location: Location = {
     lat: 42.331429,
