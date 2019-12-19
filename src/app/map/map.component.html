@@ -4,13 +4,13 @@
   <!-- Current Location -->
   <agm-marker [(latitude)]="location.marker.lat" [(longitude)]="location.marker.lng"
     [markerDraggable]="location.marker.draggable" (dragEnd)='markerDragEnd($event)'
-    (markerClick)="closeMarker(location.marker)">
+    >
   </agm-marker>
 
 
   <!-- Mogo Markers -->
   <agm-marker *ngFor="let location of mogoLocations" [title]="location.attributes.name"
-    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="mogoIcon" (markerClick)="showDirection(location.geometry)">
+    [longitude]="location.geometry.x" [latitude]="location.geometry.y" [iconUrl]="mogoIcon" (markerClick)="closeLocation(location.geometry)">
 
     <!-- Info Window -->
     <agm-info-window>
@@ -23,7 +23,7 @@
 
   <!-- Qline Markers -->
   <agm-marker *ngFor="let qlocation of qlineLocations" [title]="qlocation.attributes.name"
-    [longitude]="qlocation.geometry.x" [latitude]="qlocation.geometry.y" [iconUrl]="qlineIcon" (markerClick)="showDirection(qlocation.geometry)">
+    [longitude]="qlocation.geometry.x" [latitude]="qlocation.geometry.y" [iconUrl]="qlineIcon" (markerClick)="closeLocation(qlocation.geometry)">
 
 
     <!-- Info Window -->
