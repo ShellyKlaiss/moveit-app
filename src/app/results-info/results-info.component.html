@@ -2,9 +2,10 @@
     <div class="qline-item-container" *ngFor="let location of filteredData">
 
         <p class="name">{{ location.attributes.name }}</p>
-        <p *ngIf="mogoShow" class="attribute">Docks: {{ location.attributes.docks }}</p>
+        <p class="distance">{{ location.distance }} </p>
+        <!-- <p *ngIf="mogoShow" class="attribute">Docks: {{ location.attributes.docks }}</p>
         <p class="attribute">Direction: {{ location.attributes.direction }}</p>
-        <p class="attribute">Location: {{ location.attributes.location }}</p>
+        <p class="attribute">Location: {{ location.attributes.location }}</p> -->
         <!-- <p class="distance">Distance: {{ location.distance }}</p> -->
 
     </div>

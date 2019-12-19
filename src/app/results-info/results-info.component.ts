@@ -19,7 +19,7 @@ export class ResultsInfoComponent implements OnChanges  {
   }
 
   ngOnChanges() {
-    this.filteredData = this.combinedArray.slice(0, 5);
+    this.filteredData = this.combinedArray.slice(0, 10);
 
     if (this.filteredData.hasOwnProperty('docks')) {
       this.mogoShow = true;
