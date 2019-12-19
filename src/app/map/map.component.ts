@@ -37,11 +37,13 @@ export class MapComponent implements OnInit {
   loading: boolean = true;
   public origin: any;
   public destination: any;
+  public travelMode: string = 'WALKING';
   show: boolean;
   mogoLocations: any[] = [];
   qlineLocations : any[] = [];
   combinedArrays: any[] = [];
   geometry: any;
+
 
 
   // Current Location
@@ -163,7 +165,6 @@ export class MapComponent implements OnInit {
       lng,
     }
   };
-
   
 
   closeLocation({ x, y }) {
@@ -185,7 +186,7 @@ export class MapComponent implements OnInit {
         closest = i;
       }
     }
-    this.showDirection({ y, x});
+    this.showDirection({ y, x });
     console.log(this.combinedArrays[closest].attributes.name);
     // console.log(this.co);
 
