@@ -181,7 +181,7 @@ export class MapComponent implements OnInit {
       const difflon = (this.combinedArrays[i].geometry.x - this.location.marker.lng) * (Math.PI / 180); // Radian difference (longitudes)
 
       const d = 2 * radius * Math.asin(Math.sqrt(Math.sin(difflat / 2) * Math.sin(difflat / 2) + Math.cos(rlat1) * Math.cos(rlat2) * Math.sin(difflon / 2) * Math.sin(difflon / 2)));
-      const miles = d.toFixed(3) ;
+      const miles = d.toFixed(2) ;
 
       console.log(miles);
 
