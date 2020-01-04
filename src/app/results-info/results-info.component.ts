@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { MogoService } from '../mogo.service';
 import { QlineService } from '../qline.service';
+import { SmartBusService } from '../smartbus.service';
 
 @Component({
   selector: 'app-results-info',
@@ -14,7 +15,7 @@ export class ResultsInfoComponent implements OnChanges  {
   mogoShow: boolean = false;
 
 
-  constructor(private mogo: MogoService, private qline: QlineService) {
+  constructor(private mogo: MogoService, private qline: QlineService, private smartBus: SmartBusService) {
 
   }
 

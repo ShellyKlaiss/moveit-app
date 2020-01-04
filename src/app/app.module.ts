@@ -25,6 +25,7 @@ import { ResultsComponent } from './results/results.component';
 import { ResultsInfoComponent } from './results-info/results-info.component';
 import { MogoService } from './mogo.service';
 import { QlineService } from './qline.service';
+import { SmartBusService } from './smartbus.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -72,7 +73,7 @@ import { LoaderInterceptor } from './loader.interceptor';
     MatProgressSpinnerModule
   ],
   providers: [
-    MogoService, QlineService, GoogleMapsAPIWrapper, , LoaderService,
+    MogoService, QlineService, SmartBusService, GoogleMapsAPIWrapper, , LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

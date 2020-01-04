@@ -38,12 +38,29 @@
   </agm-marker>
 
 
+<!-- Smart Bus -->
+<agm-marker *ngFor="let smartlocation of smartBusLocations" [title]="smartlocation.attributes.name"
+  [longitude]="smartlocation.geometry.x" [latitude]="smartlocation.geometry.y" [iconUrl]="smartBusIcon" (markerClick)="closeLocation(smartlocation.geometry)">
+
+
+  <!-- Info Window -->
+  <agm-info-window>
+    <strong>{{ smartlocation.attributes.stop_name }}</strong>
+    <p><span>Distance: </span>{{ smartlocation.distance }} mi.</p>
+  </agm-info-window>
+  
+</agm-marker>
+
+
   <!-- Marker Direction Visual -->
   <agm-direction 
   *ngIf="origin && destination" 
   [origin]="origin" 
   [destination]="destination" 
   [travelMode]="travelMode" 
+  [renderOptions]="renderOptions"
   [panel]="myPanel"></agm-direction>
 
 </agm-map>
+
+<div #myPanel></div>

@@ -3,6 +3,7 @@ import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core';
 import { MogoService } from '../mogo.service';
 import { QlineService } from '../qline.service';
+import { SmartBusService } from '../smartbus.service';
 
 declare let google: any;
 
@@ -39,9 +40,12 @@ export class MapComponent implements OnInit {
   public origin: any;
   public destination: any;
   public travelMode: string = 'WALKING';
+  public renderOptions: any;
+  public panel: object | undefined;
   show: boolean;
   mogoLocations: any[] = [];
   qlineLocations : any[] = [];
+  smartBusLocations: any[] = [];
   combinedArrays: any[] = [];
   geometry: any;
 
@@ -78,13 +82,22 @@ export class MapComponent implements OnInit {
     }
   };
 
+  // Smart Bus Marker Icon
+  smartBusIcon = {
+    url: 'https://www.pinclipart.com/picdir/middle/43-436412_bus-clip-art-at-clker-icon-bus-png.png',
+    scaledSize: {
+      width: 30,
+      height: 30,
+    }
+  };
+
 
 
   @ViewChild(AgmMap, { static: true }) map: AgmMap;
 
 
 
-  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private mogo: MogoService, private qline: QlineService) {
+  constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone, private wrapper: GoogleMapsAPIWrapper, private mogo: MogoService, private qline: QlineService, private smartBus: SmartBusService) {
     this.mapsApiLoader = mapsApiLoader;
     this.zone = zone;
     this.wrapper = wrapper;
@@ -107,6 +120,11 @@ export class MapComponent implements OnInit {
     //Pushes Data from the Qline API to our Map Component
     this.qline.getQlineLocations().then(data => {
       this.qlineLocations = data;
+      this.combinedArrays = [...this.combinedArrays, ...data];
+    });
+
+    this.smartBus.getSmartBusLocations().then(data => {
+      this.smartBusLocations = data;
       this.combinedArrays = [...this.combinedArrays, ...data];
     });
   };
@@ -167,9 +185,13 @@ export class MapComponent implements OnInit {
     }
   };
 
-  setPanel(){
-    return document.querySelector('#myPanel'); 
-  }
+  // setPanel({ x, y }) {
+  //   let directionsRenderer = new google.maps.DirectionsRenderer;
+
+
+  //   this.showDirection({ y, x});
+  //   return document.querySelector('#myPanel'); 
+  //  }
 
   closeLocation({ x, y }) {
     let closest = -1;
